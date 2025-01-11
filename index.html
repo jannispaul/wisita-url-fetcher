@@ -67,7 +67,7 @@
 
     <script>
       async function getUrls() {
-        const videoId = document.getElementById("videoId").value;
+        const videoId = extractWvideoValue(document.getElementById("videoId").value);
         if (!videoId) {
           alert("Please enter a video ID");
           return;
@@ -160,6 +160,11 @@
             console.error("Failed to copy URL: ", err);
           }
         );
+      }
+
+      function extractWvideoValue(url) {
+        const match = url.match(/wvideo=([\w\d]+)/);
+        return match ? match[1] : url;
       }
     </script>
   </body>
